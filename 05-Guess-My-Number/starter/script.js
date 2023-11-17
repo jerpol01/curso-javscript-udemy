@@ -23,13 +23,19 @@ document.querySelector('.again').addEventListener('click', function(){
     document.querySelector('.number0').textContent = '?';
     document.querySelector('.number0').style.width = '15rem';
     document.querySelector('.guess').value = '';
-    
-
-    
-
 });
 
+function nIcorrecto(mensaje) {
+    document.querySelector('.message').textContent = mensaje;
+    score--;
+    if (score > 0) {
+        document.querySelector('.score').textContent = score;
+    } else {
+        document.querySelector('.score').textContent = 0;
+        document.querySelector('.message').textContent = 'Perdiste mi hermano!!!';
+    }
 
+}
 
 
 document.querySelector('.check').addEventListener('click', function (){
@@ -48,24 +54,12 @@ document.querySelector('.check').addEventListener('click', function (){
         document.querySelector('.number0').style.width = '30rem';
         }
     }else if (nJugador > numero){
-        document.querySelector('.message').textContent = 'El numero es menor!!!';
-        score--;
-        if (score > 0){
-            document.querySelector('.score').textContent = score;
-        }else {
-            document.querySelector('.score').textContent = 0;
-            document.querySelector('.message').textContent = 'Perdiste mi hermano!!!';
-        }
-        
+        nIcorrecto('El numero es Menor !!!');
     }else{
-        document.querySelector('.message').textContent = 'El numero es Mayor!!!';
-        score--;
-        if (score > 0){
-            document.querySelector('.score').textContent = score;
-        }else {
-            document.querySelector('.score').textContent = 0;
-            document.querySelector('.message').textContent = 'Perdiste mi hermano!!!';
-        }
+        nIcorrecto('El numero es Mayor!!!');
     }
+
+ 
+
 
 });
