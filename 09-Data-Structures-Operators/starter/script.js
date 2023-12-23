@@ -142,3 +142,80 @@ for (let i=1; i<10; i++){
 miobjeto[`pep`+i] = i+1;
 }
 console.log(miobjeto);
+
+const gameEvents = new Map([
+  [17, '⚽ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽ GOAL'],
+  [80, '⚽ GOAL'],
+  [92, '🔶 Yellow card'],
+  ]);
+//1)
+  const events = new Set();
+  for (const item of gameEvents.values()) {
+    events.add(item);
+  };
+
+  console.log(events);
+//2)
+  gameEvents.delete(64);
+
+  console.log(gameEvents);
+
+  //3)
+
+  console.log(`sucedio un evento cada ${90/gameEvents.size} minutos`);
+
+  //4)
+
+ for (const [minuto, tipo] of gameEvents.entries()){
+  console.log(minuto <=45 ?`[primer tiempo]  ` : `[segundo tiempo]  `,`${minuto}: `, tipo);
+ }
+
+
+ //1)
+ 
+ 
+
+ document.body.append(document.createElement('textarea'));
+ document.body.append(document.createElement('button'));
+ document.querySelector('textarea').style.fontSize = '18pt';
+ 
+
+ 
+ document.querySelector('button').addEventListener('click', function(){ 
+    const p = document.querySelector('textarea').value;
+   
+    let camel0 = p.trim ();
+    let  r = camel0.indexOf('_');
+
+    
+    if (r != -1) {
+     camel0 = camel0.toLowerCase();
+     for (let i = 0; i < p.length; i++){
+       r = camel0.indexOf('_');
+       if (r != -1){
+       camel0 = camel0.substring(0,r).concat(camel0[r+1].toUpperCase()).concat(camel0.slice(r+2));
+       }
+     }; 
+   };
+  
+   document.querySelector('textarea').value = camel0;
+
+   let camel1 = camel0.split('\n');
+   console.log(camel1);
+
+   for (let a = 0; a<camel1.length; a++){
+    console.log(camel1[a].padEnd(camel1[a].length+a+1,'*').trim());
+   }
+
+});
+
+
+
